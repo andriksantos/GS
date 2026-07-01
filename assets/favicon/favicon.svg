@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#2B4A6F"/>
-  <polygon points="32,8 54,48 10,48" fill="#FFFFFF"/>
-  <polygon points="24,26 32,18 40,26 32,34" fill="#6B8CAE"/>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="10" fill="#1D3A5F"/>
+  <!-- Diamond -->
+  <path d="M32,4 L44,18 L32,32 L20,18 Z" fill="#FFFFFF"/>
+  <!-- Left chevron -->
+  <path d="M8,60 L26,60 L32,34 L20,34 Z" fill="#FFFFFF"/>
+  <!-- Right triangle -->
+  <path d="M34,34 L56,60 L28,60 Z" fill="rgba(255,255,255,0.65)"/>
 </svg>
