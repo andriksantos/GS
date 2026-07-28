@@ -1,228 +1,101 @@
 /**
- * Grupo Saneri S. de R.L. — Main JavaScript
- * Version: 1.0.0
+ * Grupo Saneri S. de R.L. — main.js
+ * Navegación, animaciones, horario dinámico, contadores, formulario de contacto y utilidades comunes.
  */
-
 'use strict';
 
+window.GS = window.GS || {};
+
 /* ==========================================================================
-   Navigation
+   Constantes del negocio
+   ========================================================================== */
+GS.WHATSAPP_NUMBER = '50493414288';
+GS.EMAIL = 'gruposaneri@outlook.com';
+
+GS.waLink = function (message) {
+  return 'https://wa.me/' + GS.WHATSAPP_NUMBER + (message ? '?text=' + encodeURIComponent(message) : '');
+};
+
+GS.formatCurrency = function (value) {
+  if (value === null || value === undefined) return '';
+  return 'L. ' + Number(value).toLocaleString('es-HN', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+};
+
+/* ==========================================================================
+   Navegación
    ========================================================================== */
 (function initNav() {
-  const nav    = document.querySelector('.nav');
   const toggle = document.querySelector('.nav__toggle');
   const mobile = document.querySelector('.nav__mobile');
-  const links  = document.querySelectorAll('.nav__link, .nav__mobile-link');
+  const links = document.querySelectorAll('.nav__link, .nav__mobile-link');
 
-  if (!nav) return;
-
-  // Scroll effect
-  function onScroll() {
-    if (window.scrollY > 20) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  // Mobile toggle
   if (toggle && mobile) {
     toggle.addEventListener('click', function () {
-      const isOpen = mobile.classList.toggle('open');
-      toggle.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', isOpen);
+      const isOpen = mobile.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
-    // Close on link click
     mobile.querySelectorAll('.nav__mobile-link').forEach(function (link) {
       link.addEventListener('click', function () {
-        mobile.classList.remove('open');
-        toggle.classList.remove('open');
+        mobile.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });
-
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-      if (!nav.contains(e.target) && mobile.classList.contains('open')) {
-        mobile.classList.remove('open');
-        toggle.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
   }
 
-  // Active link highlighting
-  function setActiveLink() {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    links.forEach(function (link) {
-      const href = link.getAttribute('href');
-      if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-        link.classList.add('active');
-      }
-    });
-  }
-
-  setActiveLink();
+  const currentPath = (window.location.pathname.split('/').pop() || 'index.html');
+  links.forEach(function (link) {
+    const href = (link.getAttribute('href') || '').split('#')[0];
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
 })();
 
 /* ==========================================================================
-   Smooth Scroll
+   Scroll suave para anclas internas
    ========================================================================== */
 document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const id = this.getAttribute('href');
+    if (id.length < 2) return;
+    const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
-
-    const navHeight = parseInt(getComputedStyle(document.documentElement)
-      .getPropertyValue('--nav-height')) || 72;
-
-    window.scrollTo({
-      top: target.getBoundingClientRect().top + window.scrollY - navHeight - 8,
-      behavior: 'smooth'
-    });
+    const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 76;
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navHeight - 12, behavior: 'smooth' });
   });
 });
 
 /* ==========================================================================
-   Scroll Reveal
+   Scroll reveal
    ========================================================================== */
 (function initReveal() {
   const reveals = document.querySelectorAll('.reveal');
   if (!reveals.length) return;
 
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
+  }
+
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  reveals.forEach(function (el) {
-    observer.observe(el);
-  });
+  reveals.forEach(function (el) { observer.observe(el); });
 })();
 
 /* ==========================================================================
-   Contact Form Handler
-   ========================================================================== */
-(function initForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const btn     = form.querySelector('[type="submit"]');
-    const name    = form.querySelector('[name="name"]')?.value.trim();
-    const email   = form.querySelector('[name="email"]')?.value.trim();
-    const message = form.querySelector('[name="message"]')?.value.trim();
-
-    if (!name || !email || !message) {
-      showToast('Por favor completa todos los campos.', 'error');
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showToast('Por favor ingresa un correo electrónico válido.', 'error');
-      return;
-    }
-
-    // Build WhatsApp message as fallback
-    const waText = encodeURIComponent(
-      `Hola Grupo Saneri! 👋\n\n` +
-      `*Nombre:* ${name}\n` +
-      `*Correo:* ${email}\n\n` +
-      `*Mensaje:*\n${message}`
-    );
-
-    btn.disabled = true;
-    btn.textContent = 'Enviando…';
-
-    // Open WhatsApp with pre-filled message
-    setTimeout(function () {
-      window.open(`https://wa.me/50493414288?text=${waText}`, '_blank');
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = 'Enviar Mensaje';
-      showToast('¡Redirigiendo a WhatsApp!', 'success');
-    }, 600);
-  });
-})();
-
-/* ==========================================================================
-   Toast Notifications
-   ========================================================================== */
-function showToast(message, type) {
-  const existing = document.querySelector('.gs-toast');
-  if (existing) existing.remove();
-
-  const toast = document.createElement('div');
-  toast.className = 'gs-toast gs-toast--' + (type || 'info');
-  toast.setAttribute('role', 'alert');
-  toast.setAttribute('aria-live', 'polite');
-  toast.innerHTML = `
-    <span>${message}</span>
-    <button onclick="this.parentElement.remove()" aria-label="Cerrar">✕</button>
-  `;
-
-  Object.assign(toast.style, {
-    position: 'fixed',
-    bottom: '2rem',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    background: type === 'error' ? '#EF4444' : type === 'success' ? '#10B981' : '#2B4A6F',
-    color: '#fff',
-    padding: '0.875rem 1.5rem',
-    borderRadius: '10px',
-    fontSize: '0.875rem',
-    fontWeight: '500',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '1rem',
-    zIndex: '99999',
-    boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
-    animation: 'slideUp 0.3s ease',
-    maxWidth: '420px',
-    width: 'calc(100vw - 2rem)'
-  });
-
-  document.body.appendChild(toast);
-  setTimeout(function () { toast?.remove(); }, 5000);
-}
-
-/* Inject toast animation */
-(function () {
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes slideUp {
-      from { opacity: 0; transform: translate(-50%, 20px); }
-      to   { opacity: 1; transform: translate(-50%, 0); }
-    }
-  `;
-  document.head.appendChild(style);
-})();
-
-/* ==========================================================================
-   Helpers
-   ========================================================================== */
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-/* ==========================================================================
-   Counter Animation
+   Contador animado
    ========================================================================== */
 (function initCounters() {
   const counters = document.querySelectorAll('[data-count]');
@@ -231,26 +104,145 @@ function isValidEmail(email) {
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-
-      const el     = entry.target;
-      const target = parseInt(el.getAttribute('data-count'), 10);
+      const el = entry.target;
+      const target = parseFloat(el.getAttribute('data-count'));
       const suffix = el.getAttribute('data-suffix') || '';
-      const duration = 1800;
-      const startTime = performance.now();
+      const duration = 1600;
+      const start = performance.now();
 
       function update(now) {
-        const elapsed  = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const ease     = 1 - Math.pow(1 - progress, 3);
-        const current  = Math.round(ease * target);
-        el.textContent = current + suffix;
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target) + suffix;
         if (progress < 1) requestAnimationFrame(update);
       }
-
       requestAnimationFrame(update);
       observer.unobserve(el);
     });
   }, { threshold: 0.5 });
 
   counters.forEach(function (el) { observer.observe(el); });
+})();
+
+/* ==========================================================================
+   Horario dinámico
+   Lun–Vie 8:00–18:00 · Sáb 8:00–15:00 · Dom 10:00–15:00
+   ========================================================================== */
+GS.SCHEDULE = [
+  { day: 0, label: 'Domingo',   open: 10, close: 15 },
+  { day: 1, label: 'Lunes',     open: 8,  close: 18 },
+  { day: 2, label: 'Martes',    open: 8,  close: 18 },
+  { day: 3, label: 'Miércoles', open: 8,  close: 18 },
+  { day: 4, label: 'Jueves',    open: 8,  close: 18 },
+  { day: 5, label: 'Viernes',   open: 8,  close: 18 },
+  { day: 6, label: 'Sábado',    open: 8,  close: 15 }
+];
+
+GS.getHoursStatus = function (now) {
+  now = now || new Date();
+  const day = now.getDay();
+  const hour = now.getHours() + now.getMinutes() / 60;
+  const today = GS.SCHEDULE[day];
+  const isOpen = hour >= today.open && hour < today.close;
+
+  function fmt(h) {
+    const hh = Math.floor(h);
+    const period = hh >= 12 ? 'PM' : 'AM';
+    let h12 = hh % 12; if (h12 === 0) h12 = 12;
+    return h12 + ':00 ' + period;
+  }
+
+  return {
+    isOpen: isOpen,
+    todayLabel: today.label,
+    todayHours: fmt(today.open) + ' – ' + fmt(today.close),
+    day: day
+  };
+};
+
+(function initHoursBadges() {
+  const badges = document.querySelectorAll('[data-hours-badge]');
+  const rows = document.querySelectorAll('[data-hours-row]');
+  if (!badges.length && !rows.length) return;
+
+  const status = GS.getHoursStatus();
+
+  badges.forEach(function (badge) {
+    badge.classList.toggle('is-closed', !status.isOpen);
+    const dot = badge.querySelector('.hours-badge__dot') ? '' : '<span class="hours-badge__dot" aria-hidden="true"></span>';
+    const label = status.isOpen
+      ? 'Abierto ahora · Cierra ' + status.todayHours.split('–')[1].trim()
+      : 'Cerrado ahora · Hoy: ' + status.todayHours;
+    badge.innerHTML = dot + label;
+  });
+
+  rows.forEach(function (row) {
+    const rowDay = parseInt(row.getAttribute('data-hours-row'), 10);
+    row.classList.toggle('is-today', rowDay === status.day);
+  });
+})();
+
+/* ==========================================================================
+   Toast de notificación
+   ========================================================================== */
+GS.showToast = function (message) {
+  let toast = document.querySelector('.toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.classList.add('is-visible');
+  clearTimeout(GS._toastTimer);
+  GS._toastTimer = setTimeout(function () { toast.classList.remove('is-visible'); }, 3200);
+};
+
+/* ==========================================================================
+   Formulario de contacto → WhatsApp
+   ========================================================================== */
+(function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = form.querySelector('[name="nombre"]')?.value.trim();
+    const email = form.querySelector('[name="correo"]')?.value.trim();
+    const phone = form.querySelector('[name="telefono"]')?.value.trim();
+    const subject = form.querySelector('[name="asunto"]')?.value.trim();
+    const message = form.querySelector('[name="mensaje"]')?.value.trim();
+
+    if (!name || !message) {
+      GS.showToast('Por favor completa tu nombre y mensaje.');
+      return;
+    }
+
+    const text =
+      'Hola Grupo Saneri! 👋\n\n' +
+      '*Nombre:* ' + name + '\n' +
+      (email ? '*Correo:* ' + email + '\n' : '') +
+      (phone ? '*Teléfono:* ' + phone + '\n' : '') +
+      (subject ? '*Asunto:* ' + subject + '\n' : '') +
+      '\n*Mensaje:*\n' + message;
+
+    const successBox = document.getElementById('contactSuccess');
+    if (successBox) {
+      form.style.display = 'none';
+      successBox.classList.add('is-visible');
+    }
+
+    window.open(GS.waLink(text), '_blank');
+    form.reset();
+  });
+})();
+
+/* ==========================================================================
+   Año en el footer
+   ========================================================================== */
+(function setYear() {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
 })();

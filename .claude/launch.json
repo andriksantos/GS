@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/private/tmp/claude-501/-Users-andriksantos-Documents-Empresa-Grupo-Saneri-S-De-R-L-GS/0f4f9a13-373c-400d-ba9a-d0e7b3409783/scratchpad/serve_gs.py"],
+      "port": 4173
+    }
+  ]
+}

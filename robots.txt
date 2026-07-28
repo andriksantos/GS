@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# Block assets that don't need indexing
+# Block assets/data that don't need indexing
 Disallow: /assets/favicon/
+Disallow: /data/
 
 # Sitemap
 Sitemap: https://gruposaneri.com/sitemap.xml
