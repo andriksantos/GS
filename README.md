@@ -1,6 +1,6 @@
 # Grupo Saneri S. de R.L. — Sitio Web Corporativo
 
-Sitio web de **Grupo Saneri S. de R.L.**, empresa hondureña con tres líneas de negocio: organización de eventos, comercialización de productos (importación) e inversión inmobiliaria. Incluye tienda en línea con carrito de compra, formulario de agenda de eventos y horario dinámico.
+Sitio web de **Grupo Saneri S. de R.L.**, empresa hondureña con tres líneas de negocio: organización de eventos, comercialización de productos (importación) y servicios de marketing. Incluye tienda en línea con carrito de compra, formulario de agenda de eventos y horario dinámico.
 
 🌐 **[gruposaneri.com](https://gruposaneri.com)**
 
@@ -12,12 +12,15 @@ Sitio web de **Grupo Saneri S. de R.L.**, empresa hondureña con tres líneas de
 GS/
 ├── assets/
 │   ├── favicon/
-│   │   └── favicon.svg
+│   │   ├── favicon-16.png / favicon-32.png / favicon-192.png / favicon-512.png
+│   │   └── apple-touch-icon.png
 │   └── images/
-│       ├── logo.jpg / logo.svg / logo-white.svg / icon.jpg
+│       ├── logo.png / logo-white.png     # Logo oficial (transparente, color / blanco)
+│       ├── icon.png / icon-white.png     # Marca (triángulo) sola, oficial
 │       ├── og-image.jpg              # Imagen para redes sociales
 │       └── productos/
 │           └── automotriz/           # Fotos reales de producto (Topdon, Avapow, Konnwei, Goodyear)
+├── favicon.ico                       # Favicon multi-tamaño (raíz, para navegadores antiguos)
 ├── css/
 │   └── styles.css                    # Sistema de diseño (colores del logo, componentes, tienda, carrito, formularios)
 ├── data/
@@ -28,7 +31,7 @@ GS/
 │   ├── cart.js                       # Carrito de compra (localStorage) + checkout por WhatsApp
 │   └── agenda.js                     # Formulario de agenda de eventos → WhatsApp
 ├── index.html                        # Inicio (landing de eventos + resumen de negocio + destacados)
-├── servicios.html                    # Tipos de evento (sociales, empresariales, académicos)
+├── servicios.html                    # Todos los servicios: eventos, comercial e importación, y marketing
 ├── productos.html                    # Categorías de producto
 ├── tienda.html                       # Tienda completa con filtros, buscador y carrito
 ├── agenda.html                       # Formulario para agendar un evento
@@ -87,7 +90,7 @@ El formulario de **Agendar evento** (`agenda.html`) funciona igual: arma un mens
 | Página | URL | Descripción |
 |--------|-----|-------------|
 | Inicio | `/` | Landing de eventos, resumen de las 3 líneas de negocio, destacados de tienda |
-| Eventos | `/servicios.html` | Tipos de evento sociales, empresariales y académicos |
+| Servicios | `/servicios.html` | Todos los servicios: eventos (sociales, empresariales, académicos), comercial e importación, y marketing digital |
 | Productos | `/productos.html` | Categorías de producto (automotriz, domótica, belleza, tecnología, relojería, perfumería) |
 | Tienda | `/tienda.html` | Catálogo completo con filtros, buscador y carrito |
 | Agendar | `/agenda.html` | Formulario para agendar un evento |
@@ -114,7 +117,7 @@ Para cambiar el horario, edita el arreglo `GS.SCHEDULE` en `js/main.js`.
 
 - 📱 WhatsApp: [+504 9341-4288](https://wa.me/50493414288)
 - 📧 Email: [gruposaneri@outlook.com](mailto:gruposaneri@outlook.com)
-- 📘 Facebook: [GrupoSaneri](https://www.facebook.com/GrupoSaneri)
+- 📘 Facebook: [GrupoSaneriHN](https://www.facebook.com/GrupoSaneriHN)
 - 📸 Instagram: [gruposaneri](https://www.instagram.com/gruposaneri/)
 - 🔗 Linktree: [linktr.ee/gruposaneri](https://linktr.ee/gruposaneri)
 - 📍 San Pedro Sula, Cortés, Honduras

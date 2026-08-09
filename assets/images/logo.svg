@@ -3,20 +3,20 @@
   <!-- Symbol -->
   <g>
     <!-- Diamond (navy) -->
-    <path d="M52,2 L70,24 L52,46 L34,24 Z" fill="#1D3A5F"/>
+    <path d="M52,2 L70,24 L52,46 L34,24 Z" fill="#123252"/>
     <!-- Left navy chevron -->
-    <path d="M8,118 L42,118 L50,54 L28,54 Z" fill="#1D3A5F"/>
+    <path d="M8,118 L42,118 L50,54 L28,54 Z" fill="#123252"/>
     <!-- Gray right triangle -->
-    <path d="M56,54 L96,118 L46,118 Z" fill="#4B5C68"/>
+    <path d="M56,54 L96,118 L46,118 Z" fill="#445255"/>
   </g>
   <!-- GRUPO label -->
   <text x="122" y="44"
     font-family="'Inter','Helvetica Neue',Arial,sans-serif"
     font-size="20" font-weight="500" letter-spacing="5"
-    fill="#6B7888">GRUPO</text>
+    fill="#7A8A8C">GRUPO</text>
   <!-- SANERI -->
   <text x="118" y="104"
     font-family="'Inter','Helvetica Neue',Arial,sans-serif"
     font-size="64" font-weight="800" letter-spacing="-1"
-    fill="#1D3A5F">SANERI</text>
+    fill="#123252">SANERI</text>
 </svg>
