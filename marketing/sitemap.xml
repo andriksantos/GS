@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://gruposaneri.com/marketing/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/servicios.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/servicios.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1758873269811-4e62e346b4b7?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/planes.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/planes.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1787647561487-dc2e75950374?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/diagnostico.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/diagnostico.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1763038311036-6d18805537e5?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/cotizar.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/cotizar.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/nosotros.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/nosotros.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/marketing/contacto.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/marketing/contacto.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1520333789090-1afc82db536a?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+</urlset>

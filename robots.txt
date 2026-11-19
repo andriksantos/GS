@@ -9,3 +9,4 @@ Disallow: /data/
 Sitemap: https://gruposaneri.com/sitemap.xml
 
 Sitemap: https://gruposaneri.com/eventos/sitemap.xml
+Sitemap: https://gruposaneri.com/marketing/sitemap.xml
