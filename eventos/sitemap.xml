@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://gruposaneri.com/eventos/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/organizacion.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/organizacion.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1677768061409-3d4fbd0250d1?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/alquiler.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/alquiler.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/paquetes.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/paquetes.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1758810744028-689670b0877c?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/cotizar.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/cotizar.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1762216444265-a675abbb48dd?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/nosotros.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/nosotros.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1533120921505-7f40f5237ee1?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://gruposaneri.com/eventos/contacto.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es-HN" href="https://gruposaneri.com/eventos/contacto.html"/>
+    <image:image><image:loc>https://images.unsplash.com/photo-1676734629381-ecad774073b7?auto=format&amp;fit=crop&amp;w=1600&amp;q=72</image:loc></image:image>
+  </url>
+</urlset>

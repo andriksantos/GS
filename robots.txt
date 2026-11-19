@@ -7,3 +7,5 @@ Disallow: /data/
 
 # Sitemap
 Sitemap: https://gruposaneri.com/sitemap.xml
+
+Sitemap: https://gruposaneri.com/eventos/sitemap.xml
