@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andriksantos.com/klivo/sitemap.xml
+Sitemap: https://gruposaneri.com/klivo/sitemap.xml
