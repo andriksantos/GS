@@ -3,7 +3,6 @@ User-agent: *
 Allow: /
 
 # Archivos internos que no necesitan indexarse
-Disallow: /data/
 Disallow: /.claude/
 
 # Sitemaps
