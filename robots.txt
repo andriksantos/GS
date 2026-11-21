@@ -1,12 +1,13 @@
+# robots.txt · gruposaneri.com
 User-agent: *
 Allow: /
 
-# Block assets/data that don't need indexing
-Disallow: /assets/favicon/
+# Archivos internos que no necesitan indexarse
 Disallow: /data/
+Disallow: /.claude/
 
-# Sitemap
+# Sitemaps
 Sitemap: https://gruposaneri.com/sitemap.xml
-
 Sitemap: https://gruposaneri.com/eventos/sitemap.xml
 Sitemap: https://gruposaneri.com/marketing/sitemap.xml
+Sitemap: https://gruposaneri.com/klivo/sitemap.xml

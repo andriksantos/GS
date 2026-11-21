@@ -1,149 +1,84 @@
-# Grupo Saneri S. de R.L. — Sitio Web Corporativo
+<p align="center">
+  <img src="assets/images/logo.png" alt="Grupo Saneri" width="320">
+</p>
 
-Sitio web de **Grupo Saneri S. de R.L.**, empresa hondureña con tres líneas de negocio: organización de eventos, comercialización de productos (importación) y servicios de marketing. Incluye tienda en línea con carrito de compra, formulario de agenda de eventos y horario dinámico.
+<h1 align="center">Grupo Saneri S. de R.L.</h1>
+<p align="center"><strong>Cinco negocios, un mismo compromiso: hacer que las cosas pasen.</strong></p>
 
-🌐 **[gruposaneri.com](https://gruposaneri.com)**
-
----
-
-## Estructura del proyecto
-
-```
-GS/
-├── assets/
-│   ├── favicon/
-│   │   ├── favicon-16.png / favicon-32.png / favicon-192.png / favicon-512.png
-│   │   └── apple-touch-icon.png
-│   └── images/
-│       ├── logo.png / logo-white.png     # Logo oficial (transparente, color / blanco)
-│       ├── icon.png / icon-white.png     # Marca (triángulo) sola, oficial
-│       ├── og-image.jpg              # Imagen para redes sociales
-│       └── productos/
-│           └── automotriz/           # Fotos reales de producto (Topdon, Avapow, Konnwei, Goodyear)
-├── favicon.ico                       # Favicon multi-tamaño (raíz, para navegadores antiguos)
-├── css/
-│   └── styles.css                    # Sistema de diseño (colores del logo, componentes, tienda, carrito, formularios)
-├── data/
-│   └── productos.json                # ★ CATÁLOGO EDITABLE — productos, servicios de evento y categorías
-├── js/
-│   ├── main.js                       # Navegación, animaciones, horario dinámico, formulario de contacto
-│   ├── products.js                   # Carga y renderiza el catálogo (tienda, categorías, destacados)
-│   ├── cart.js                       # Carrito de compra (localStorage) + checkout por WhatsApp
-│   └── agenda.js                     # Formulario de agenda de eventos → WhatsApp
-├── index.html                        # Inicio (landing de eventos + resumen de negocio + destacados)
-├── servicios.html                    # Todos los servicios: eventos, comercial e importación, y marketing
-├── productos.html                    # Categorías de producto
-├── tienda.html                       # Tienda completa con filtros, buscador y carrito
-├── agenda.html                       # Formulario para agendar un evento
-├── nosotros.html                     # Misión, visión, valores, horario, mapa, redes
-├── contacto.html                     # Formulario de contacto + mapa + horario
-├── privacy.html                      # Política de privacidad
-├── terms.html                        # Términos de uso
-├── sitemap.xml                       # Mapa del sitio (SEO)
-├── robots.txt                        # Directivas para buscadores
-├── CNAME                             # Dominio personalizado (GitHub Pages)
-└── README.md
-```
+<p align="center">
+  <a href="https://wa.me/50493414288?text=Hola%20Grupo%20Saneri%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n.">💬 WhatsApp +504 9341-4288</a> ·
+  <a href="mailto:gruposaneri@outlook.com">✉️ gruposaneri@outlook.com</a> ·
+  <a href="https://gruposaneri.com">🌐 gruposaneri.com</a>
+</p>
 
 ---
 
-## ★ Cómo agregar, editar o quitar productos y servicios
+## ¿Quiénes somos?
 
-Todo el catálogo vive en **`data/productos.json`**. No requiere programar ni tocar HTML/CSS/JS:
+**Grupo Saneri** es una empresa hondureña con sede en **San Pedro Sula** que reúne, en un solo equipo, todo lo que un hogar, un emprendimiento o una empresa necesita para crecer: **eventos, marketing, energía, automotriz e importación**.
 
-1. Abre `data/productos.json` con cualquier editor de texto.
-2. Cada producto/servicio es un objeto con: `id` (único), `grupo` (`producto` o `evento`), `categoria`, `subcategoria`, `nombre`, `descripcion`, `precio` (número en Lempiras, o `null` si aún no tienes precio fijo), `precioTexto` (solo si `precio` es `null`, ej. `"Cotización personalizada"`), `imagen` (ruta dentro de `assets/images/...` o `null`), `icono` (emoji de respaldo), `marca`, `destacado` (`true` para que aparezca en Inicio).
-3. Copia un bloque existente, cámbiale el `id` y los datos, y agrégalo dentro del arreglo `"productos"` o `"eventos"`.
-4. Guarda el archivo — la tienda, la página de productos y los destacados del inicio se actualizan solos.
+No somos un intermediario más. Somos el aliado que **negocia, compra, importa, instala, organiza y promociona** por ti, con la seriedad de una empresa formalmente constituida y la cercanía de una respuesta por WhatsApp.
 
-> **Importante:** varios precios en el catálogo son de referencia y deben confirmarse/actualizarse con los precios reales del negocio antes de considerarlos definitivos (están marcados en el propio archivo).
-
-Para agregar una imagen de producto: colócala en `assets/images/productos/<categoría>/` (formato JPG/WEBP, idealmente menor a 100 KB) y referencia esa ruta en el campo `imagen`.
+> 📍 Sede en San Pedro Sula · 🌎 Cobertura **sin límites** · 🧾 Cotización **gratis y sin compromiso**
 
 ---
 
-## Cómo funciona el carrito y el checkout
+## Nuestras líneas de negocio
 
-El sitio **no tiene pasarela de pago ni base de datos en un servidor** (por diseño, para mantenerlo gratuito de hospedar y simple de mantener). En su lugar:
+### 🎉 Eventos — [gruposaneri.com/eventos](https://gruposaneri.com/eventos/)
+Bodas, XV años, bautizos, fiestas infantiles, graduaciones y eventos corporativos. **Alquiler de mobiliario, decoración, toldos, sonido, iluminación y juegos**, o el evento completo organizado de principio a fin.
+**Arma tu lista en el catálogo y recibe tu cotización en minutos.**
 
-1. El cliente agrega productos/servicios al carrito (guardado en el navegador, `localStorage`).
-2. Al presionar "Finalizar pedido", el sitio arma automáticamente un mensaje de WhatsApp con el detalle del pedido y el subtotal.
-3. Se abre WhatsApp para que el cliente lo envíe y el equipo de Grupo Saneri coordine el pago (transferencia, link de pago BAC, tarjeta/Mipos) y la entrega.
+### 📣 Marketing — [gruposaneri.com/marketing](https://gruposaneri.com/marketing/)
+Community manager, branding, páginas web, anuncios en Facebook, Instagram y Google, SEO, WhatsApp marketing y trade marketing. **Marketing que se mide en clientes, no en likes.**
+**Haz el diagnóstico gratis de 2 minutos** y descubre qué le falta a tu negocio.
 
-El formulario de **Agendar evento** (`agenda.html`) funciona igual: arma un mensaje de WhatsApp con los detalles de la solicitud.
+### ❄️⚡☀️ KLIVO — [gruposaneri.com/klivo](https://gruposaneri.com/klivo/)
+Aire acondicionado, electricidad y energía solar. Instalación y mantenimiento de aires, reparaciones y estudios eléctricos, **paneles solares para casa** y **sistemas de respaldo** para negocios e industrias. **Ahorra energía y olvídate de los apagones.**
 
----
+### 🚗 Automotriz — [Cotiza por WhatsApp](https://wa.me/50493414288?text=Hola%20Grupo%20Saneri%2C%20quiero%20informaci%C3%B3n%20de%20productos%20automotrices.)
+Accesorios, iluminación LED, equipos de diagnóstico y cuidado automotriz. **Venta al detalle y por mayor.**
+¿Tienes un negocio automotriz? **Buscamos distribuidores en Honduras.**
 
-## Tecnologías
-
-- **HTML5** semántico y accesible (ARIA)
-- **CSS3** con Custom Properties (design tokens extraídos del logo), Grid y Flexbox
-- **JavaScript** vanilla — sin frameworks ni dependencias, catálogo dirigido por JSON
-- **Fuentes:** Plus Jakarta Sans + Fraunces (Google Fonts)
-- **SEO/SEM:** Schema.org JSON-LD (Organization, Service), Open Graph, Twitter Cards, sitemap.xml, robots.txt
-- **Hosting:** GitHub Pages con dominio personalizado
-
----
-
-## Páginas
-
-| Página | URL | Descripción |
-|--------|-----|-------------|
-| Inicio | `/` | Landing de eventos, resumen de las 3 líneas de negocio, destacados de tienda |
-| Servicios | `/servicios.html` | Todos los servicios: eventos (sociales, empresariales, académicos), comercial e importación, y marketing digital |
-| Productos | `/productos.html` | Categorías de producto (automotriz, domótica, belleza, tecnología, relojería, perfumería) |
-| Tienda | `/tienda.html` | Catálogo completo con filtros, buscador y carrito |
-| Agendar | `/agenda.html` | Formulario para agendar un evento |
-| Nosotros | `/nosotros.html` | Misión, visión, valores, horario dinámico, mapa, redes |
-| Contacto | `/contacto.html` | Formulario de contacto, horario, mapa |
-| Privacidad | `/privacy.html` | Política de privacidad |
-| Términos | `/terms.html` | Términos de uso |
+### 🌐 Comercial e importación — [Cotiza por WhatsApp](https://wa.me/50493414288?text=Hola%20Grupo%20Saneri%2C%20quiero%20informaci%C3%B3n%20sobre%20compras%20e%20importaci%C3%B3n.)
+Negociamos con proveedores, compramos e importamos desde **Panamá, China y Estados Unidos**, y gestionamos la logística completa **hasta tu bodega**, con documentación en regla. También te asesoramos para que importes con confianza.
 
 ---
 
-## Horario de atención (dinámico)
+## ¿Por qué elegirnos?
 
-El badge "Abierto/Cerrado ahora" se calcula en el navegador del visitante según la hora local:
-
-- Lunes a viernes: 8:00 AM – 6:00 PM
-- Sábados: 8:00 AM – 3:00 PM
-- Domingos: 10:00 AM – 3:00 PM
-
-Para cambiar el horario, edita el arreglo `GS.SCHEDULE` en `js/main.js`.
-
----
-
-## Contacto
-
-- 📱 WhatsApp: [+504 9341-4288](https://wa.me/50493414288)
-- 📧 Email: [gruposaneri@outlook.com](mailto:gruposaneri@outlook.com)
-- 📘 Facebook: [GrupoSaneriHN](https://www.facebook.com/GrupoSaneriHN)
-- 📸 Instagram: [gruposaneri](https://www.instagram.com/gruposaneri/)
-- 🔗 Linktree: [linktr.ee/gruposaneri](https://linktr.ee/gruposaneri)
-- 📍 San Pedro Sula, Cortés, Honduras
+| | |
+|---|---|
+| ✅ **Un solo contacto** | Cinco especialidades, una sola empresa responsable. |
+| ⚡ **Respuesta rápida** | Te atendemos por WhatsApp, sin vueltas. |
+| 🧾 **Cotización gratis** | Precios claros y por escrito, sin compromiso. |
+| 🏢 **Empresa formal** | Grupo Saneri S. de R.L., constituida en Honduras. |
+| 🌎 **Sin límites** | Atendemos en todo Honduras y proyectos internacionales según el servicio. |
+| 📈 **Experiencia comercial** | Compras, importación, logística, trade marketing y fidelización de clientes. |
 
 ---
 
-## Deploy en GitHub Pages
+## Nuestra esencia
 
-1. Sube el contenido de esta carpeta `GS/` a un repositorio de GitHub.
-2. Ve a **Settings → Pages** y selecciona la rama `main` (o `gh-pages`) como fuente.
-3. El archivo `CNAME` configurará automáticamente el dominio `gruposaneri.com`.
-4. Asegúrate de apuntar los DNS de tu dominio a los servidores de GitHub Pages:
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
+**Misión.** Desarrollar y operar negocios rentables mediante la inversión, importación y gestión eficiente de activos, generando valor sostenible y crecimiento continuo.
 
-## Probar en local
+**Visión.** Ser un grupo empresarial sólido y rentable, capaz de transformar oportunidades en negocios escalables y sostenibles.
 
-```
-python3 -m http.server 8000
-```
-y abre `http://localhost:8000` (también puedes usar `.claude/serve.py`).
+**Valores.** Innovación · Compromiso · Calidad · Integridad · Orientación al cliente · Trabajo en equipo
 
 ---
 
-© 2026 Grupo Saneri S. de R.L. — Todos los derechos reservados.
+## Hablemos hoy
+
+¿Tienes un evento, un proyecto, una importación o un negocio que quieres hacer crecer?
+**Escríbenos y te conectamos con la línea correcta.**
+
+<p align="center">
+  <a href="https://wa.me/50493414288?text=Hola%20Grupo%20Saneri%2C%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n."><strong>💬 Escribir por WhatsApp · +504 9341-4288</strong></a><br>
+  ✉️ <a href="mailto:gruposaneri@outlook.com">gruposaneri@outlook.com</a><br>
+  <a href="https://www.facebook.com/GrupoSaneriHN">Facebook</a> · <a href="https://www.instagram.com/gruposaneri/">Instagram</a>
+</p>
+
+---
+
+<p align="center"><sub>© 2026 Grupo Saneri S. de R.L. · San Pedro Sula, Honduras</sub></p>
