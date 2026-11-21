@@ -1,0 +1,25 @@
+{
+  "name": "Grupo Saneri S. de R.L.",
+  "short_name": "Grupo Saneri",
+  "description": "Eventos, marketing, KLIVO, automotriz e importación en Honduras.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "es-HN",
+  "background_color": "#F2F0EA",
+  "theme_color": "#16304F",
+  "icons": [
+    {
+      "src": "/assets/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
